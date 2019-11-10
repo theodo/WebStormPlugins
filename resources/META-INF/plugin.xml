@@ -1,0 +1,44 @@
+<idea-plugin>
+  <id>com.theodo.webstorm.plugin.id</id>
+  <name>Theodo WebStorm Plugins</name>
+  <version>1.0</version>
+  <vendor email="guillaumem@theodo.fr" url="http://www.theodo.fr">Theodo</vendor>
+
+  <description><![CDATA[
+    Plugin to add some inspections:<br>
+     - <b>Unknown CSS classes</b> used by Components (not found in scss files)<br>
+     - Usages of <b>console.log(...)</b> in production files<br>
+  ]]></description>
+
+  <change-notes><![CDATA[
+    Nov. 8th 2019, First version of the plugin.
+  ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.jetbrains.javascript">
+      <!-- Add your extensions here -->
+  </extensions>
+  <extensions defaultExtensionNs="com.intellij">
+    <localInspection implementationClass="theodo.js.plugins.inspection.MissingSCSSClassInspection"/>
+    <localInspection implementationClass="theodo.js.plugins.inspection.ConsoleLogInspection"/>
+  </extensions>
+
+  <depends>com.intellij.modules.platform</depends>
+  <depends>JavaScript</depends>
+  <depends>com.intellij.css</depends>
+  <depends>com.intellij.modules.xml</depends>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+</idea-plugin>

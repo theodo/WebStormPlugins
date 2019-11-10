@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="plugin-openapi">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/javascript-openapi.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JavaScriptLanguage.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/css.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/css-openapi.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/openapi.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
