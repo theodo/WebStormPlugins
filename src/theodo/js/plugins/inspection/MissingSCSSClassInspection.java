@@ -3,12 +3,10 @@ package theodo.js.plugins.inspection;
 import com.intellij.codeInsight.daemon.GroupNames;
 import com.intellij.codeInspection.LocalInspectionToolSession;
 import com.intellij.codeInspection.ProblemsHolder;
+import com.intellij.lang.ecmascript6.psi.ES6ComputedName;
 import com.intellij.lang.javascript.inspections.JSInspection;
 import com.intellij.lang.javascript.psi.*;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiElementVisitor;
-import com.intellij.psi.PsiReference;
-import com.intellij.psi.XmlElementVisitor;
+import com.intellij.psi.*;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlAttributeValue;
 import org.jetbrains.annotations.Nls;
@@ -63,6 +61,19 @@ public class MissingSCSSClassInspection extends JSInspection {
                     if(resolves.isEmpty()){
                         problemsHolder.registerProblem(referenceExpression, "Can't find reference of css class");
                     }
+                }
+            }
+
+            @Override
+            public void visitJSObjectLiteralExpression(JSObjectLiteralExpression objectLiteralExpression) {
+                JSProperty[] properties = objectLiteralExpression.getProperties();
+                for (JSProperty property : properties) {
+                    property.acceptChildren(new JSElementVisitor(){
+                        @Override
+                        public void visitES6ComputedName(ES6ComputedName node) {
+                            searchForReferences(node, problemsHolder);
+                        }
+                    });
                 }
             }
         });

@@ -1,7 +1,7 @@
 # WebStormPlugins
 Simple inspections to highlight unknown CCS classes used in 'classname' and to highlight console.logs in production code
 
-1) Search for:
+### Search for Unknown CSS:
 
 ```
        <Components className={styles.XYZ}>
@@ -9,8 +9,13 @@ Simple inspections to highlight unknown CCS classes used in 'classname' and to h
        </Components>
 ```
  where XYZ is not found in imported **styles**
+ 
+ Example:
+ ![alt text](doc/UnknownClassname.png "Sample 1")
 
-2) Search for:
+ 
+
+### Search for console usages in PROD
   
 ```
       console.log('XYZ') in PRODUCTION (non tests) files
